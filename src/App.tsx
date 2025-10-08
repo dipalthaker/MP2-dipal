@@ -8,7 +8,7 @@ import Header from './components/Header';
 
 export default function App() {
   return (
-    <Router basename="/mp2">
+    <Router basename="/MP2-dipal">
       <Header />
       <div className="container">
       <Routes>
