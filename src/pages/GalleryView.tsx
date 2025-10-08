@@ -15,27 +15,36 @@ const GalleryView: React.FC = () => {
 
   return (
     <div className="container">
-      <h2>Gallery</h2>
-<div className="controls">
-  <select className="select" value={category} onChange={e => setCategory(e.target.value)}>
-    {categories.map(c => <option key={c} value={c}>{c}</option>)}
-  </select>
-</div>
+      <h2>Gallery View</h2>
 
-<div className="grid">
-  {meals.map(meal => (
-    <article className="card" key={meal.idMeal}>
-      <a href={`/mp2/detail/${meal.idMeal}`}>
-        <img className="thumb" src={meal.strMealThumb} alt={meal.strMeal} />
-      </a>
-      <div className="card-body">
-        <h3 className="card-title"><a href={`/mp2/detail/${meal.idMeal}`}>{meal.strMeal}</a></h3>
+      <div className="controls">
+        <select
+          className="select"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+        >
+          {categories.map((cat) => (
+            <option key={cat} value={cat}>
+              {cat}
+            </option>
+          ))}
+        </select>
       </div>
-    </article>
-  ))}
-</div>
-  </div>
-);
+
+      <div className="grid">
+        {meals.map((meal) => (
+          <article className="card" key={meal.idMeal}>
+            <Link to={`/detail/${meal.idMeal}`}>
+              <img className="thumb" src={meal.strMealThumb} alt={meal.strMeal} />
+              <div className="card-body">
+                <h3 className="card-title">{meal.strMeal}</h3>
+              </div>
+            </Link>
+          </article>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default GalleryView;
